@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Aing_CustomerAttr>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Aing_CustomerAttr>
+	</modules>
+</config>

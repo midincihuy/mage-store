@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Aing_CustomerAttr>
+			<version>1.0.0.1</version>
+		</Aing_CustomerAttr>
+	</modules>
+	<global>
+		<helpers>
+			<customerattr>
+				<class>Aing_CustomerAttr_Helper</class>
+			</customerattr>
+		</helpers>
+		<resources>
+			<aing_customerattr_setup>
+				<setup>
+					<module>Aing_CustomerAttr</module>
+					<class>Mage_Customer_Model_Entity_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</aing_customerattr_setup>
+		</resources>
+	</global>
+</config>
