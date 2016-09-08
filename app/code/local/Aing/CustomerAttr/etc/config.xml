@@ -23,5 +23,13 @@
 				</connection>
 			</aing_customerattr_setup>
 		</resources>
+		<blocks>
+			<adminhtml>
+                <rewrite>
+<sales_order_create_shipping_address>Aing_CustomerAttr_Block_Adminhtml_Sales_Order_Create_Shipping_Address</sales_order_create_shipping_address>
+<sales_order_create_billing_address>Aing_CustomerAttr_Block_Adminhtml_Sales_Order_Create_Billing_Address</sales_order_create_billing_address>
+                </rewrite>
+            </adminhtml>s
+		</blocks>
 	</global>
 </config>
