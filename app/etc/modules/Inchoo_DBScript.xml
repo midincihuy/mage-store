@@ -4,7 +4,7 @@
 	<modules>
 		<Inchoo_DBScript>
 			<active>true</active>
-			<codePool>local</active>
+			<codePool>local</codePool>
 		</Inchoo_DBScript>
 	</modules>
 </config>
