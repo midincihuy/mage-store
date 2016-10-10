@@ -49,6 +49,18 @@ class Oshop_ExtraFee_Model_Observer
         ), 'discount_amount');
         $model->setExtraFeeAmount($model->getExtraFeeAmount()*1);
 
+        // Edit Form 
+        $actionsSelect = $observer->getForm()->getElement('simple_action');
+        if ($actionsSelect){
+            $actionsSelect->setValues(array_merge(
+                $actionsSelect->getValues(), 
+                Mage::helper('oshop_extrafee')->getDiscountTypes()
+            ));
+            
+            // yang ini gak usah dulu deh
+            // $actionsSelect->setOnchange('ampromo_hide()'); //ampromo is correct name
+        }
+        
         Mage::app()->getLayout()->getBlock('promo_quote_edit_tab_actions')
             ->setChild('form_after', Mage::app()->getLayout()->createBlock('adminhtml/widget_form_element_dependence')
             ->addFieldMap('rule_extra_fee_amount', 'extra_fee_amount')
@@ -58,6 +70,8 @@ class Oshop_ExtraFee_Model_Observer
                 Mage_SalesRule_Model_Rule::BY_FIXED_ACTION,
                 Mage_SalesRule_Model_Rule::CART_FIXED_ACTION))
         );
+
+
     }
 
     /**

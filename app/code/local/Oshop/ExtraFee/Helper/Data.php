@@ -25,4 +25,27 @@ class Oshop_ExtraFee_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return (string) Mage::getStoreConfig(self::XML_PATH_EXTRA_FEE_RULE_LABEL);
     }
+
+
+    const PERCENT_FEE    = 'percent_fee';
+        
+    public function getDiscountTypes($asOptions=false)
+    {
+        $types = array(
+            self::PERCENT_FEE   => $this->__('Percent Extra Fee'),
+        );
+        
+        if (!$asOptions){
+            $values = array();
+            foreach ($types as $k=>$v){
+                $values[] = array(
+                    'value' => $k, 
+                    'label' => $v                
+                );
+            }
+            $types = $values;
+        }
+
+        return $types;
+    }
 }
