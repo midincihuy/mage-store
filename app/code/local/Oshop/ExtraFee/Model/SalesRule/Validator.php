@@ -33,6 +33,46 @@ class Oshop_ExtraFee_Model_SalesRule_Validator extends Mage_SalesRule_Model_Vali
             $baseExtraFeeAmount = 0;
 
             switch ($rule->getSimpleAction()) {
+                case 'percent_fee':
+                    // $extraFeePercent = min(100, $rule->getExtraFeeAmount());
+                    // $step = $rule->getDiscountStep();
+                    // if ($step) {
+                    //     $qty = floor($qty/$step)*$step;
+                    // }
+                    // $_rulePct = $extraFeePercent/100;
+                    // $extraFeeAmount    = ($qty * $itemPrice - $item->getExtraFeeRuleAmount()) * $_rulePct;
+                    // $baseExtraFeeAmount = ($qty * $baseItemPrice - $item->getBaseExtraFeeRuleAmount()) * $_rulePct;
+
+                    // if (!$rule->getDiscountQty() || $rule->getDiscountQty()>$qty) {
+                    //     $extraFeePercent = min(100, $item->getExtraFeeRulePercent()+$extraFeePercent);
+                    //     $item->setExtraFeeRulePercent($extraFeePercent);
+                    // }
+                    break;
+
+                case 'fix_fee':
+                    // $extraFeePercent = min(100, $rule->getExtraFeeAmount());
+                    // $step = $rule->getDiscountStep();
+                    // if ($step) {
+                    //     $qty = floor($qty/$step)*$step;
+                    // }
+                    // $_rulePct = $extraFeePercent/100;
+                    // $extraFeeAmount    = ($qty * $itemPrice - $item->getExtraFeeRuleAmount()) * $_rulePct;
+                    // $baseExtraFeeAmount = ($qty * $baseItemPrice - $item->getBaseExtraFeeRuleAmount()) * $_rulePct;
+
+                    // if (!$rule->getDiscountQty() || $rule->getDiscountQty()>$qty) {
+                    //     $extraFeePercent = min(100, $item->getExtraFeeRulePercent()+$extraFeePercent);
+                    //     $item->setExtraFeeRulePercent($extraFeePercent);
+                    // }
+                    break;
+
+                case 'random_fee':
+                    $random = substr(rand(),0,$rule->getExtraFeeAmount());
+
+                    $quoteAmount        = $quote->getStore()->convertPrice($random);
+                    $extraFeeAmount     = $qty * $quoteAmount;
+                    $baseExtraFeeAmount = $random;
+                    break;
+
                 case Mage_SalesRule_Model_Rule::BY_PERCENT_ACTION:
                     $extraFeePercent = min(100, $rule->getExtraFeeAmount());
                     $step = $rule->getDiscountStep();
