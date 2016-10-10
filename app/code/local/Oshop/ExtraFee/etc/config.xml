@@ -19,11 +19,6 @@
                     <validator>Oshop_ExtraFee_Model_SalesRule_Discount_Validator</validator>
                 </rewrite>
             </salesrule>
-            <adminhtml>
-                <rewrite>
-                    <rule>Oshop_ExtraFee_Model_Rule</rule>
-                </rewrite>
-            </adminhtml>
         </models>
         <blocks>
             <oshop_extrafee>
