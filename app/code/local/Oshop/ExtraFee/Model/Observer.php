@@ -60,15 +60,17 @@ class Oshop_ExtraFee_Model_Observer
             // yang ini gak usah dulu deh
             // $actionsSelect->setOnchange('ampromo_hide()'); //ampromo is correct name
         }
-        
+
+        $allow = array(
+            'percent_fee',
+            'fix_fee',
+            'random_fee'
+                );
         Mage::app()->getLayout()->getBlock('promo_quote_edit_tab_actions')
             ->setChild('form_after', Mage::app()->getLayout()->createBlock('adminhtml/widget_form_element_dependence')
             ->addFieldMap('rule_extra_fee_amount', 'extra_fee_amount')
             ->addFieldMap('rule_simple_action', 'simple_action')
-            ->addFieldDependence('extra_fee_amount', 'simple_action', array(
-                Mage_SalesRule_Model_Rule::BY_PERCENT_ACTION,
-                Mage_SalesRule_Model_Rule::BY_FIXED_ACTION,
-                Mage_SalesRule_Model_Rule::CART_FIXED_ACTION))
+            ->addFieldDependence('extra_fee_amount', 'simple_action', $allow)
         );
 
 
