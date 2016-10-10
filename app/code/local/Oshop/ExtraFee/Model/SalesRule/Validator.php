@@ -34,35 +34,29 @@ class Oshop_ExtraFee_Model_SalesRule_Validator extends Mage_SalesRule_Model_Vali
 
             switch ($rule->getSimpleAction()) {
                 case 'percent_fee':
-                    // $extraFeePercent = min(100, $rule->getExtraFeeAmount());
-                    // $step = $rule->getDiscountStep();
-                    // if ($step) {
-                    //     $qty = floor($qty/$step)*$step;
-                    // }
-                    // $_rulePct = $extraFeePercent/100;
-                    // $extraFeeAmount    = ($qty * $itemPrice - $item->getExtraFeeRuleAmount()) * $_rulePct;
-                    // $baseExtraFeeAmount = ($qty * $baseItemPrice - $item->getBaseExtraFeeRuleAmount()) * $_rulePct;
+                    $extraFeePercent = min(100, $rule->getExtraFeeAmount());
+                    $step = $rule->getDiscountStep();
+                    if ($step) {
+                        $qty = floor($qty/$step)*$step;
+                    }
+                    $_rulePct = $extraFeePercent/100;
+                    $extraFeeAmount    = ($qty * $itemPrice - $item->getExtraFeeRuleAmount()) * $_rulePct;
+                    $baseExtraFeeAmount = ($qty * $baseItemPrice - $item->getBaseExtraFeeRuleAmount()) * $_rulePct;
 
-                    // if (!$rule->getDiscountQty() || $rule->getDiscountQty()>$qty) {
-                    //     $extraFeePercent = min(100, $item->getExtraFeeRulePercent()+$extraFeePercent);
-                    //     $item->setExtraFeeRulePercent($extraFeePercent);
-                    // }
+                    if (!$rule->getDiscountQty() || $rule->getDiscountQty()>$qty) {
+                        $extraFeePercent = min(100, $item->getExtraFeeRulePercent()+$extraFeePercent);
+                        $item->setExtraFeeRulePercent($extraFeePercent);
+                    }
                     break;
 
                 case 'fix_fee':
-                    // $extraFeePercent = min(100, $rule->getExtraFeeAmount());
-                    // $step = $rule->getDiscountStep();
-                    // if ($step) {
-                    //     $qty = floor($qty/$step)*$step;
-                    // }
-                    // $_rulePct = $extraFeePercent/100;
-                    // $extraFeeAmount    = ($qty * $itemPrice - $item->getExtraFeeRuleAmount()) * $_rulePct;
-                    // $baseExtraFeeAmount = ($qty * $baseItemPrice - $item->getBaseExtraFeeRuleAmount()) * $_rulePct;
-
-                    // if (!$rule->getDiscountQty() || $rule->getDiscountQty()>$qty) {
-                    //     $extraFeePercent = min(100, $item->getExtraFeeRulePercent()+$extraFeePercent);
-                    //     $item->setExtraFeeRulePercent($extraFeePercent);
-                    // }
+                    $step = $rule->getDiscountStep();
+                    if ($step) {
+                        $qty = floor($qty/$step)*$step;
+                    }
+                    $quoteAmount        = $quote->getStore()->convertPrice($rule->getExtraFeeAmount());
+                    $extraFeeAmount     = $qty * $quoteAmount;
+                    $baseExtraFeeAmount = $qty * $rule->getExtraFeeAmount();
                     break;
 
                 case 'random_fee':
