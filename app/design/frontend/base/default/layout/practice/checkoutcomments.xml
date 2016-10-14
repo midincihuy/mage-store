@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<layout>
+	<checkout_onepage_review translate="label">
+		<reference name="checkout.onepage.agreements">
+<!-- masih gak bisa
+	<block type="core/text_list" name="form.additional.info2">
+                <block type="captcha/captcha" name="captcha.guest.checkout2">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>review_checkout</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+	</block>-->
+			<action method="setTemplate">
+                                <template>practice/checkoutcomments/onepage/comment-agreements.phtml</template>
+                        </action>
+		</reference>
+	</checkout_onepage_review>
+
+	<customer_account>
+		<reference name="customer_account_navigation">
+			<action method="addLink">
+				<name>checkoutcomments</name>
+				<path>checkoutcomments/list/</path>
+				<label>Checkout Comments</label>
+			</action>
+		</reference>
+	</customer_account>
+
+	<checkoutcomments_list_index>
+		<update handle="customer_account"/>
+		<reference name="content">
+			<block type="checkoutcomments/list" name="checkoutcomments.list" template="practice/checkoutcomments/list.phtml"/>
+		</reference>
+	</checkoutcommments_list_index>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</layout>
