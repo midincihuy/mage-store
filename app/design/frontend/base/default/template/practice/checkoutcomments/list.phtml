@@ -1,7 +1,7 @@
 <div class="page-title">
 	<h1><?php echo $this->__('Checkout Comments')?></h1>
 </div>
-<?php echo $this->getMessageBlock()->getGroupedHtml() ?>
+<!--?php echo $this->getMessageBlock()->getGroupedHtml() ?-->
 
 <?php if($this->getComments()->getSize()): ?>
 <table class="data-table" id="my-checkoutcomments-table">
@@ -16,5 +16,7 @@
 			<?php echo $this->formatDate($_comment->getCreatedAt(), 'medium', true)?>
 		  </a></td>
 	</tr>
+<?php endforeach;?>
 </table>
 <?php endif;?>
+

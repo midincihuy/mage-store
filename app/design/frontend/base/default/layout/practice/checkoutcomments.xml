@@ -29,14 +29,12 @@
 			</action>
 		</reference>
 	</customer_account>
-
 	<checkoutcomments_list_index>
-		<update handle="customer_account"/>
+		<update handle="customer_account" />
 		<reference name="content">
-			<block type="checkoutcomments/list" name="checkoutcomments.list" template="practice/checkoutcomments/list.phtml"/>
+			<block type="checkoutcomments/list" name="checkoutcomments.list" template="practice/checkoutcomments/list.phtml" />
 		</reference>
-	</checkoutcommments_list_index>
-
+	</checkoutcomments_list_index>
 
 
 

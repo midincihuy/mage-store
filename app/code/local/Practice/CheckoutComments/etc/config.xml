@@ -76,4 +76,17 @@
 			</checkoutcomments>
 		</routers>
 	</frontend>
+
+	<adminhtml>
+		<events>
+			<core_block_abstract_to_html_after>
+				<observers>
+					<display_checkout_comment>
+						<class>checkoutcomments/observer</class>
+						<method>displayCheckoutComment</method>
+					</display_checkout_comment>
+				</observers>
+			</core_block_abstract_to_html_after>
+		</events>
+	</adminhtml>
 </config>
