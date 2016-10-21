@@ -411,6 +411,16 @@ Validation.add('IsEmpty', '', function(v) {
     return  (v == '' || (v == null) || (v.length == 0) || /^\s+$/.test(v));
 });
 
+Validation.add('validate-mobile', 'Please enter a valid Phone Number (7 digit until 13 digit)', function(v){
+return Validation.get('IsEmpty').test(v) || /^[0-9]{7,13}$/i.test(v)
+});
+Validation.add('validate-postcode', 'Please enter a valid Post Code (5 digit)', function(v){
+return Validation.get('IsEmpty').test(v) || /^[0-9]{5}$/i.test(v)
+});
+Validation.add('validate-dob-year', 'Please enter a valid year (4 digit)', function(v){
+return Validation.get('IsEmpty').test(v) || /^[0-9]{4}$/i.test(v)
+});
+
 Validation.addAllThese([
     ['validate-no-html-tags', 'HTML tags are not allowed', function(v) {
 				return !/<(\/)?\w+/.test(v);
